@@ -20,9 +20,12 @@ const Darshboard = () => {
   });
 
   useDidMount(() => {
-    let getGroupChat: string = localStorage.getItem("groupchat")!,
-    aquiredGroupChat = JSON.parse(getGroupChat);
-    setGroup(aquiredGroupChat);
+ 
+  window.addEventListener('storage', () => {
+        let getGroupChat: string = localStorage.getItem("groupchat")!,
+        aquiredGroupChat = JSON.parse(getGroupChat);
+        setGroup(aquiredGroupChat);
+  });
   });
 
 
