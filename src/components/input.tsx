@@ -23,7 +23,7 @@ const Input = (props:any) => {
     let groupchat = JSON.stringify(groupChat);
     localStorage.setItem("groupchat", groupchat);
 
-    //re getting the data
+    //regetting the data
     let getUpdatedGroupChat: string = localStorage.getItem("groupchat")!,
     aquiredUpdatedGroupChat = JSON.parse(getUpdatedGroupChat);
     props.setGroup(aquiredUpdatedGroupChat);

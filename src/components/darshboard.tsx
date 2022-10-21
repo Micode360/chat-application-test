@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDidMount } from "rooks";
 import Input from "./input";
 import Register from "./register";
 
@@ -18,14 +19,12 @@ const Darshboard = () => {
     messages: [],
   });
 
+  useDidMount(() => {
+    let getGroupChat: string = localStorage.getItem("groupchat")!,
+    aquiredGroupChat = JSON.parse(getGroupChat);
+    setGroup(aquiredGroupChat);
+  });
 
-  const evtSource = new EventSource("http://localhost:4000");
-  //what npm package can I install that can help me use server sent request
-
-
-  evtSource.onmessage = (event) => {
-        console.log(event, "event")
-  }
 
 
 
@@ -47,7 +46,7 @@ const Darshboard = () => {
         </div>
       </div>
 
-      <div className="w-full h-full">
+      <div className="w-full h-full pb-[8.5rem]">
         <div className="flex flex-col h-full overflow-x-auto mb-4">
           <div className="flex flex-col h-full">
             <div className="grid grid-cols-12 gap-y-2">
