@@ -21,7 +21,7 @@ const Darshboard = () => {
   useEffect(() => {
     const theElement: any = document.getElementById("chat_container");
     let getGroupChat: string = localStorage.getItem("groupchat")!,
-    aquiredGroupChat = JSON.parse(getGroupChat);
+      aquiredGroupChat = JSON.parse(getGroupChat);
 
     const scrollToBottom = (node: any, status: string) => {
       node.scrollTop = node.scrollHeight;
@@ -29,26 +29,26 @@ const Darshboard = () => {
 
     window.addEventListener("storage", () => {
       let getGroupChat: string = localStorage.getItem("groupchat")!,
-      aquiredGroupChat = JSON.parse(getGroupChat);
+        aquiredGroupChat = JSON.parse(getGroupChat);
       setGroup(aquiredGroupChat);
     });
 
-    
-    window.addEventListener('beforeunload',(e) => {
-    e.preventDefault();
-        let groupChat = { title: "My Group", users: aquiredGroupChat.users < 0? 0 : aquiredGroupChat.users - 1, messages: [...aquiredGroupChat.messages] };
-        let groupchat = JSON.stringify(groupChat);
-        localStorage.setItem("groupchat", groupchat);
-      
+    window.addEventListener("beforeunload", (e) => {
+      e.preventDefault();
+      let groupChat = {
+        title: "My Group",
+        users: group.users < 0 ? 1 : group.users - 1,
+        messages: [...aquiredGroupChat.messages],
+      };
+      let groupchat = JSON.stringify(groupChat);
+      localStorage.setItem("groupchat", groupchat);
     });
 
     if (group.messages.length > 3 && firstime) {
       scrollToBottom(theElement, "intial");
       setFirstime(false);
     }
-
   }, [firstime, group.messages, group.messages.length, group.users]);
-
 
   return (
     <section className="flex flex-col items-center m-5 border-[1px] border-gray-200 rounded-xl overflow-hidden absolute top-0 bottom-0 left-0 right-0">

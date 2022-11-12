@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const Register = (props: any) => {
-  
   let [regUser, setRegUser] = useState<String>("");
   let [error, setError] = useState<String>("");
 
@@ -16,6 +15,7 @@ const Register = (props: any) => {
       let groupChat = { title: "My Group", users: 1, messages: [] };
       let groupchat = JSON.stringify(groupChat);
       localStorage.setItem("groupchat", groupchat);
+      return;
     }
 
     let groupChat = {
