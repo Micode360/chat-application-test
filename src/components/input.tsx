@@ -27,6 +27,7 @@ const Input = (props:any) => {
     let getUpdatedGroupChat: string = localStorage.getItem("groupchat")!,
     aquiredUpdatedGroupChat = JSON.parse(getUpdatedGroupChat);
     props.setGroup(aquiredUpdatedGroupChat);
+    setMessage({username: "",text:"", createdAt:""})
   }
 
   return (
@@ -37,6 +38,7 @@ const Input = (props:any) => {
           <input
             type="text"
             onChange={(e)=>setMessage({username: props.username,text:e.target.value, createdAt: moment().format('LT')})}
+            value={message.text}
             className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 focus:border-2 pl-4 h-10"
           />
         </div>
